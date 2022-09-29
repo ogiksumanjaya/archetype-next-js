@@ -12,7 +12,7 @@ const Post = () => {
 
   return (
     <>
-      <p>Post Page</p>
+      <p className="uppercase">Post Page</p>
       <button onClick={handleGetAllPost} className="bg-slate-500 text-white">
         Get ALl Post
       </button>
