@@ -18,6 +18,23 @@
 # misc
 .DS_Store
 *.pem
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production
+.env.staging
+.env.production.local
+.env.staging.local
+
+
+# Large media files
+*.mp4
+*.tiff
+*.avi
+*.flv
+*.mov
+*.wmv
 
 # debug
 npm-debug.log*
@@ -34,3 +51,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# bundler related
+.eslintcache
