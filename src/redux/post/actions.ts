@@ -1,17 +1,23 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
-import { callErrorMsg } from '../../utils/helpers/errorMsg'
-import { request } from '../../utils/helpers/service'
-import { ApiEnum } from './interfaces'
+import { publicRequest } from '../../utils/helpers/axiosRequest'
+import { getExceptionPayload } from '../../utils/helpers/errorResult'
+import { APIErrorType } from '../interface'
+import { PostInterface, ApiEnum } from './interfaces'
 
-export const fetchAllPost = createAsyncThunk(
-  'POST/FETCH_ALL_POST',
+export enum PostEnum {
+  GET_POST = 'POST/GET_POST_LIST',
+  ADD_POST = 'POST/CREATE_POST',
+  DELETE_POST = 'POST/DELETE_POST',
+}
+
+export const getPostList = createAsyncThunk<PostInterface[], void, { rejectValue: APIErrorType }>(
+  PostEnum.GET_POST,
   async (_, { rejectWithValue }) => {
     try {
-      const response = await request.get(ApiEnum.POST)
+      const response = await publicRequest.get(ApiEnum.POST)
       return response.data
-    } catch (err) {
-      callErrorMsg(err)
-      return rejectWithValue(err)
+    } catch (error) {
+      return rejectWithValue(getExceptionPayload(error))
     }
   },
 )

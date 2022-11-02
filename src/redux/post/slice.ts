@@ -1,17 +1,16 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { fetchAllPost } from './actions'
+import { APIErrorType, APIStatusEnum } from '../interface'
+import { getPostList } from './actions'
 import { PostInterface } from './interfaces'
 
 export type PostInitialStateType = {
-  isLoading?: boolean
+  status: string
   data?: PostInterface[]
-  isError?: boolean
+  error?: APIErrorType
 }
 
 const initialState: PostInitialStateType = {
-  isLoading: false,
-  data: [],
-  isError: false,
+  status: APIStatusEnum.IDLE,
 }
 
 const reducerName = 'postsReducer'
@@ -20,28 +19,28 @@ const postSlice = createSlice({
   name: reducerName,
   initialState,
   reducers: {
-    setLoading: (state, action: PayloadAction<PostInitialStateType['isLoading']>) => {
-      state.isLoading = action.payload
+    setLoading: (state, action: PayloadAction<PostInitialStateType['status']>) => {
+      state.status = action.payload
     },
-    setData: (state, action: PayloadAction<PostInterface[]>) => {
+    setData: (state, action: PayloadAction<PostInitialStateType['data']>) => {
       state.data = action.payload
     },
-    setError: (state, action: PayloadAction<PostInitialStateType['isError']>) => {
-      state.isLoading = action.payload
+    setError: (state, action: PayloadAction<PostInitialStateType['error']>) => {
+      state.error = action.payload
     },
   },
   extraReducers: (builder) => {
     builder
-      .addCase(fetchAllPost.pending, (state) => {
-        state.isLoading = true
+      .addCase(getPostList.pending, (state) => {
+        state.status = APIStatusEnum.PENDING
       })
-      .addCase(fetchAllPost.fulfilled, (state, action) => {
-        state.isLoading = false
+      .addCase(getPostList.fulfilled, (state, action) => {
+        state.status = APIStatusEnum.FULFILLED
         state.data = action.payload
       })
-      .addCase(fetchAllPost.rejected, (state) => {
-        state.isLoading = false
-        state.isError = true
+      .addCase(getPostList.rejected, (state, action) => {
+        state.status = APIStatusEnum.REJECTED
+        state.error = action.payload
       })
   },
 })
