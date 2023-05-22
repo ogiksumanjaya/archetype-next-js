@@ -1,0 +1,134 @@
+{
+  "env": {
+    "browser": true,
+    "es6": true,
+    "jest": true
+  },
+  "extends": [
+    "next/core-web-vitals",
+    "plugin:@next/next/recommended",
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "prettier",
+    "plugin:sonarjs/recommended"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "plugins": ["react", "react-hooks", "@typescript-eslint", "prettier", "sonarjs"],
+  "rules": {
+    "no-unused-vars": ["warn", { "vars": "local", "args": "none" }],
+    "react/react-in-jsx-scope": "off",
+    "react/prop-types": "off",
+    "no-console": "warn"
+  },
+  "settings": {
+    "import/resolver": {
+      "typescript": {}
+    },
+    "react": {
+      "version": "detect"
+    }
+  },
+  "overrides": [
+    {
+      "files": ["*.ts", "*.tsx"],
+      "rules": {
+        "@typescript-eslint/naming-convention": [
+          "error",
+          {
+            "selector": "typeLike",
+            "format": ["PascalCase"],
+            "suffix": ["Interface", "Type", "Enum", "PropsType"]
+          },
+          {
+            "selector": "typeParameter",
+            "format": ["PascalCase"],
+            "suffix": []
+          },
+          {
+            "selector": "property",
+            "format": ["camelCase", "snake_case", "PascalCase"],
+            "filter": {
+              "regex": "(^(aria-))",
+              "match": false
+            }
+          },
+          {
+            "selector": "variableLike",
+            "format": ["camelCase", "UPPER_CASE", "PascalCase", "snake_case"]
+          },
+          {
+            "selector": "parameter",
+            "format": ["camelCase", "UPPER_CASE", "PascalCase", "snake_case"],
+            "leadingUnderscore": "allowSingleOrDouble"
+          }
+        ],
+        "@typescript-eslint/no-unused-vars": [
+          "warn",
+          { "ignoreRestSiblings": true, "argsIgnorePattern": "^_" }
+        ],
+        "react/react-in-jsx-scope": "off",
+        "@typescript-eslint/no-var-requires": "off",
+        "react/jsx-filename-extension": [
+          1,
+          {
+            "extensions": [".tsx"]
+          }
+        ],
+        "@typescript-eslint/explicit-module-boundary-types": "off",
+        "no-console": "warn",
+        "no-param-reassign": [
+          "error",
+          {
+            "ignorePropertyModificationsFor": ["state"],
+            "props": true
+          }
+        ],
+        "no-unused-vars": "off",
+        "camelcase": "off",
+        "react/jsx-props-no-spreading": "off",
+        "react/prop-types": "off",
+        "react/require-default-props": "off",
+        "semi": "off",
+        "arrow-body-style": ["error", "as-needed"],
+        "no-use-before-define": "off",
+        "import/extensions": "off",
+        "import/no-unresolved": "off",
+        "import/prefer-default-export": "off",
+        "comma-dangle": "off",
+        "quotes": "off",
+        "operator-linebreak": "off",
+        "implicit-arrow-linebreak": "off",
+        "no-confusing-arrow": "off",
+        "jsx-a11y/no-static-element-interactions": "off",
+        "jsx-a11y/click-events-have-key-events": "off",
+        "jsx-a11y/no-noninteractive-element-interactions": "off",
+        "prettier/prettier": [
+          "warn",
+          {
+            "$schema": "http://json.schemastore.org/prettierrc",
+            "arrowParens": "always",
+            "bracketSpacing": true,
+            "embeddedLanguageFormatting": "auto",
+            "endOfLine": "auto",
+            "htmlWhitespaceSensitivity": "css",
+            "insertPragma": false,
+            "jsxSingleQuote": false,
+            "printWidth": 100,
+            "proseWrap": "preserve",
+            "quoteProps": "as-needed",
+            "semi": false,
+            "singleQuote": true,
+            "tabWidth": 2,
+            "trailingComma": "all",
+            "useTabs": false
+          }
+        ]
+      }
+    }
+  ]
+}
