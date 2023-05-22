@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "format": "prettier --write ./src",
-    "tsc-check": "npx tsc -p tsconfig.json --incremental --noEmit"
+    "tsc-check": "npx tsc -p tsconfig.json --incremental --noEmit",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@types/node": "20.2.3",
@@ -31,7 +32,14 @@
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-sonarjs": "^0.19.0",
+    "husky": "^8.0.0",
+    "lint-staged": "^13.2.2",
     "prettier": "^2.8.8",
     "prettier-plugin-tailwindcss": "^0.3.0"
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,ts,tsx}": [
+      "yarn lint"
+    ]
   }
 }
