@@ -1,10 +1,11 @@
 {
-  "editor.formatOnPaste": false,
-  "editor.formatOnSave": true,
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true,
-    "source.fixAll.format": true
-  },
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "css.lint.unknownAtRules": "ignore"
-}
+    "editor.formatOnPaste": false,
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": true,
+      "source.fixAll.format": true
+    },
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "css.lint.unknownAtRules": "ignore"
+  }
+  
